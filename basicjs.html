@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <p id="sayhello"></p>
+
+    <script>
+        var yourname=prompt("what is your name?");
+        if(yourname!=null){
+            document.getElementById("sayhello").innerHTML="Hello "+yourname;
+
+        }else{
+            alert("Please enter name next time");
+        }
+
+        // concatenation
+        document.write("5+4=",5+4,"<br>");
+        document.write("5+4="+5+4,"<br>");
+
+        //maximum and minimum numbers
+        document.write("Max num=",Number.MAX_VALUE,"<br>");
+        document.write("Min num=",Number.MIN_VALUE,"<br>");
+
+        //round off
+        var balance=1563.87;
+        document.write("Monthly payment : ", (balance/12).toFixed(2));
+        
+
+    </script>
+</body>
+</html>

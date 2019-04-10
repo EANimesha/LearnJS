@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <style>
+        body{
+            font-size: 1.6em;
+        }
+        .hidden{display:none;}
+        .show{display: inline!important;}
+        button{
+            border:2px solid black;
+            font-size: .5em;
+            font-weight: bold;
+            color: black;
+            padding: .8em 2em;
+            margin-top:.4em;
+        }
+    </style>
+    
+</head>
+<body>
+    <form action="#" id="sampForm">
+        <input type="text" id='charinput'>
+        <p id="keydata">key data here</p>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form><br>
+
+    <img src="2.jpeg" alt="logo" id="logo" width="150px" height="150px"><br>
+    <button id="logoButton">Get Logo</button><br>
+    <input type="text" id="mouseInput" size="30"><br>
+    Mouse X: <input type="text" id="mouseX"><br>
+    Mouse Y: <input type="text" id="mouseY"><br>
+    <button id="clearInputs">Clear</button>
+
+    <script>
+        function getChar(event){
+            if(event.which==null){
+                return String.fromCharCode(event.keyCode);
+                //charcode convert unicode values into characters
+                //keycode-->get the unicode value of the pressed keyboard key
+                //which--> get the value of pressed keyboard key/pressed mouse value
+            }else if(event.which!=0 && event.charCode!=0){
+                return String.fromCharCode(event.which);
+            }else{
+                return null;
+            }
+        }
+
+        document.getElementById('charinput').onkeypress=
+        function(event){
+            var char=getChar(event || window.event);
+            if(!char) return false;
+
+            document.getElementById('keydata').innerHTML=char+" was clicked";
+            return true;
+        }
+
+        document.getElementById('charinput').onfocus=function(event){
+            document.getElementById('keydata').innerHTML="Input gained focus";
+        }
+
+        document.getElementById('charinput').onselect=function(event){
+            document.getElementById('keydata').innerHTML="Text selected";
+        }
+
+        document.getElementById('logo').className="hidden";
+        document.getElementById('logoButton').onclick=function(event){
+            document.getElementById('logo').className="show";
+        }
+       
+
+        document.getElementById('logo').onmouseover=function(event){
+            document.getElementById('logo').src="3.jpg";
+            document.getElementById('mouseInput').value="Mouse over the image";
+
+        }
+        document.getElementById('logo').onmouseleave=function(event){
+            document.getElementById('logo').src="2.jpeg";
+            document.getElementById('mouseInput').value="Mouse left the image";
+            
+        }
+
+        document.body.onmousemove=function(e){
+            e=e|| window.event;
+            var pageX=e.pageX;
+            var pageY=e.pageY;
+            if (pageX==undefined) {
+                pageX=e.clientX+document.body.scrollLeft+document.documentElement.scrollLeft;
+                pageY=e.clientX+document.body.scrollTop+document.documentElement.scrollTop;
+            }
+            document.getElementById('mouseX').value=pageX;
+            document.getElementById('mouseY').value=pageY;
+        }
+
+        document.getElementById('clearInputs').onclick=function(event){
+            var  inputElements=document.getElementsByTagName('input');
+            for (let i = 0; i < inputElements.length; i++) {
+                if (inputElements[i].type=="text") {
+                    inputElements[i].value="";
+                }
+                
+            }
+        }
+        
+    </script>
+
+</body>
+</html>

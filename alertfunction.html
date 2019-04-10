@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+  </head>
+<body>
+    <script>
+        function openAlert(msg){
+            alert(msg);
+        }
+    </script>
+    <!-- inline js -->
+    <a href="JavaScript:void(0)" onclick="alert('Hello');">Say Hello</a>
+
+    <a href="JavaScript:void(0)" onclick="openAlert('Hi how are you');">Say something</a>
+
+    <a href="JavaScript:void(0)" 
+    onmouseover="this.style.color='red';"
+    onmouseout="this.style.color='blue'"
+    ondblclick="this.text='You double clicked'"
+    onmousedown="this.text='Dont\'t Press to hard'"
+    onmouseup="this.text='Thank you'"
+    >make me red</a>
+
+    <input type="text" id="randInput" 
+    onchange="var dataEntered=document.getElementById('randInput').value;
+    alert('User Typed '+dataEntered)">
+    
+    
+</body>
+</html>
